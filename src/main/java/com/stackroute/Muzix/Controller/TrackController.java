@@ -3,6 +3,8 @@ import com.stackroute.Muzix.domain.Track;
 import com.stackroute.Muzix.service.TrackService;
 import com.stackroute.Muzix.exception.TrackAlreadyExistsException;
 import com.stackroute.Muzix.exception.TrackNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value="/api")
    public class TrackController<TrackDao> {
+    @Autowired
+            @Qualifier("track Dummy Service Controller")
             TrackService trackService;
 
     public TrackController(TrackService trackService){

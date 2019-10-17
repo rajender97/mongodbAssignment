@@ -1,3 +1,4 @@
+
 package com.stackroute.Muzix.service;
 
 import com.stackroute.Muzix.Repository.TrackRepository;
@@ -14,25 +15,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-//@Primary
-
-public class TrackServiceImpl implements TrackService {
+@Primary
+@Qualifier("track Dummy Service Controller")
+public class DummyTrackServiceImpl implements TrackService {
 
     private TrackRepository trackRepository;
 
     @Autowired
-    public TrackServiceImpl(TrackRepository trackRepository) {
+    public DummyTrackServiceImpl(TrackRepository trackRepository) {
         this.trackRepository = trackRepository;
     }
 
     @Override
     public Track saveTrack(Track track) throws TrackAlreadyExistsException {
         if(trackRepository.existsById(track.getTrackId())){
-            throw new TrackAlreadyExistsException("Track already exists");
+            throw new TrackAlreadyExistsException("Dummy Track already exists");
         }
         Track track1 = trackRepository.save(track);
         if(track1==null){
-            throw new TrackAlreadyExistsException("Track is already exists");
+            throw new TrackAlreadyExistsException("Dummy Track is already exists");
         }
 
         return track1;
@@ -60,12 +61,12 @@ public class TrackServiceImpl implements TrackService {
 
         if(!trackRepository.existsById(id))
         {
-            throw new TrackNotFoundException("Track not found");
+            throw new TrackNotFoundException("Dummy Track not found");
         }
         Track list = trackRepository.findById(id).get();
         if(list==null)
         {
-            throw new TrackNotFoundException("Track not found");
+            throw new TrackNotFoundException("Dummy Track not found");
         }
         return trackRepository.findById(id);
     }

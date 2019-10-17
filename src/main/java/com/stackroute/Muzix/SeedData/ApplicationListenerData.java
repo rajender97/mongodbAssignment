@@ -1,5 +1,6 @@
 package com.stackroute.Muzix.SeedData;
 
+import com.stackroute.Muzix.Repository.TrackRepository;
 import com.stackroute.Muzix.domain.Track;
 import com.stackroute.Muzix.service.TrackService;
 import com.stackroute.Muzix.exception.TrackAlreadyExistsException;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 @PropertySource("application.properties")
 public class ApplicationListenerData implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
-    TrackService trackService;
+    TrackRepository trackRepository;
 
     @Value("${track.TrackId}")
     private int TrackId;
@@ -33,11 +34,7 @@ public class ApplicationListenerData implements ApplicationListener<ContextRefre
 //            track.setTrackName("Bahubali");
 //            track.setComments("good");
 
-           try {
-                trackService.saveTrack(track);
-            } catch (TrackAlreadyExistsException e) {
-                e.printStackTrace();
-            }
-        }
+        trackRepository.save(track);
+    }
     }
 
