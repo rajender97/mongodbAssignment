@@ -11,6 +11,9 @@ public class CommandLineRunnerData implements CommandLineRunner {
     @Autowired
     TrackService trackService;
 
+    public void setTrackService(TrackService trackService) {
+        this.trackService = trackService;
+    }
 
     @Override
     public void run(String... args) throws Exception {

@@ -5,11 +5,18 @@ import com.stackroute.Muzix.exception.TrackAlreadyExistsException;
 import com.stackroute.Muzix.exception.TrackNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
+
+@PropertySources({
+        @PropertySource(value = "classpath:application-prod.properties"),
+        @PropertySource(value = "classpath:application.properties")
+})
 
 @RestController
 @RequestMapping(value="/api")
