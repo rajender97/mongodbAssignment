@@ -6,16 +6,16 @@ import com.stackroute.Muzix.domain.Track;
 import com.stackroute.Muzix.exception.TrackAlreadyExistsException;
 import com.stackroute.Muzix.exception.TrackNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-//@Primary
 
+@Primary
+@Service
 public class TrackServiceImpl implements TrackService {
 
     private TrackRepository trackRepository;
@@ -72,7 +72,7 @@ public class TrackServiceImpl implements TrackService {
 
     @Override
     public List<Track> getTrackByName(String name) throws TrackNotFoundException{
-        List<Track> list=trackRepository.findBytrackName(name);
+        List<Track> list=trackRepository.findByTrackName(name);
         if(list.isEmpty()){
             throw new TrackNotFoundException("Track not Found");
         }

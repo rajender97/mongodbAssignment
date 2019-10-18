@@ -13,18 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@PropertySources({
-        @PropertySource(value = "classpath:application-prod.properties"),
-        @PropertySource(value = "classpath:application.properties")
-})
+
 
 @RestController
 @RequestMapping(value="/api")
    public class TrackController<TrackDao> {
-    @Autowired
-            @Qualifier("track Dummy Service Controller")
-            TrackService trackService;
 
+    TrackService trackService;
+    @Autowired
     public TrackController(TrackService trackService){
 
              this.trackService=trackService;

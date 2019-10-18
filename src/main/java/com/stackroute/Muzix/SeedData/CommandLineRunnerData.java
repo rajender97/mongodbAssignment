@@ -1,5 +1,6 @@
 package com.stackroute.Muzix.SeedData;
 
+import com.stackroute.Muzix.Repository.TrackRepository;
 import com.stackroute.Muzix.domain.Track;
 import com.stackroute.Muzix.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommandLineRunnerData implements CommandLineRunner {
     @Autowired
-    TrackService trackService;
+    TrackRepository trackRepository;
 
-    public void setTrackService(TrackService trackService) {
-        this.trackService = trackService;
+    public CommandLineRunnerData(TrackRepository trackRepository) {
+        this.trackRepository = trackRepository;
     }
 
     @Override
@@ -21,8 +22,10 @@ public class CommandLineRunnerData implements CommandLineRunner {
         track.setTrackId(2);
         track.setTrackName("bahubali");
         track.setComments("good");
-        trackService.saveTrack(track);
+        trackRepository.save(track);
     }
+
+
 }
 
 

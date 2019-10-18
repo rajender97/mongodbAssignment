@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Primary
-@Qualifier("track Dummy Service Controller")
+//@Primary
+//@Qualifier("track Dummy Service Controller")
 public class DummyTrackServiceImpl implements TrackService {
 
     private TrackRepository trackRepository;
@@ -72,12 +72,17 @@ public class DummyTrackServiceImpl implements TrackService {
     }
 
     @Override
-    public List<Track> getTrackByName(String name) throws TrackNotFoundException{
-        List<Track> list=trackRepository.findBytrackName(name);
-        if(list.isEmpty()){
-            throw new TrackNotFoundException("Track not Found");
-        }
-        return list;
+    public List<Track> getTrackByName(String name) throws TrackNotFoundException {
+        return null;
     }
+//
+//    @Override
+//    public List<Track> getTrackByName(String name) throws TrackNotFoundException{
+//        List<Track> list=trackRepository.findBytrackName(name);
+//        if(list.isEmpty()){
+//            throw new TrackNotFoundException("Track not Found");
+//        }
+//        return list;
+//    }
 }
 
